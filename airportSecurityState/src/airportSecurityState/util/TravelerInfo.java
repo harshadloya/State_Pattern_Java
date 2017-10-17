@@ -2,16 +2,16 @@ package airportSecurityState.util;
 
 import java.util.Date;
 
-public class TravellerInfo 
+public class TravelerInfo 
 {
 	private int Day;
 	private Date TOD;
 	private String Airline;
 	private String Item;
 
-	public TravellerInfo() {}
+	public TravelerInfo() {}
 
-	public TravellerInfo(int dayLn, Date todLn, String airlineLn, String itemLn) 
+	public TravelerInfo(int dayLn, Date todLn, String airlineLn, String itemLn) 
 	{
 		Day = dayLn;
 		TOD = todLn;
