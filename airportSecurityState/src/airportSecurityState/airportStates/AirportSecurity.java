@@ -72,6 +72,8 @@ public class AirportSecurity implements AirportStateI
 			String temp[];
 			
 			boolean dayCheck = false;
+			//boolean TODCheck = false;
+			//boolean airlineCheck = false;
 			boolean itemCheck = false;
 
 			//remove leading or trailing whitespaces if any
@@ -137,7 +139,7 @@ public class AirportSecurity implements AirportStateI
 		checkAndUpdateAirportState();
 	}
 
-	private void checkAndUpdateAirportState() 
+	private void checkAndUpdateAirportState()
 	{
 		if(8 <= avgTrafficPerDay || 2 <= avgProhibitedItemCountPerDay)
 		{
