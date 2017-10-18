@@ -12,8 +12,7 @@ public class AirportSecurity implements AirportStateI
 	private int totalNumberOfTravellers;
 	private int totalNumberOfDays;
 	private int totalProhibitedItemsCount;
-	private int avgTrafficPerDay;
-	private int avgProhibitedItemCountPerDay;
+
 	
 	private HashMap<Integer, TravelerInfo> travellerData;
 	
@@ -35,8 +34,8 @@ public class AirportSecurity implements AirportStateI
 	
 	int prevDay = -1;
 	
-	private AirportStateI HighRiskState, LowRiskState, ModerateRiskState;
-	private AirportStateI currentState = null;
+	AirportStateI HighRiskState, LowRiskState, ModerateRiskState;
+	AirportStateI currentState = null;
 	
 	public enum ProhibitedItems {Gun, NailCutter, Blade, Knife};
 	
@@ -51,8 +50,9 @@ public class AirportSecurity implements AirportStateI
 		totalNumberOfDays = 0;
 		totalNumberOfTravellers = 0;
 		totalProhibitedItemsCount = 0;
-		avgTrafficPerDay = 0;
-		avgProhibitedItemCountPerDay = 0;
+		//avgTrafficPerDay = 0;
+		//avgProhibitedItemCountPerDay = 0;
+		currentState = LowRiskState;
 	}
 	
 	public AirportSecurity(String inputFilePath, String outputFilePath)
@@ -101,7 +101,6 @@ public class AirportSecurity implements AirportStateI
 			if(itemCheck)
 				totalProhibitedItemsCount += 1;
 			
-			calcValues();
 			tightenOrLoosenSecurity();
 		}
 		
@@ -130,36 +129,29 @@ public class AirportSecurity implements AirportStateI
 		return false;
 	}
 
-	private void calcValues()
-	{
-		avgTrafficPerDay = totalNumberOfTravellers / totalNumberOfDays;
-		
-		avgProhibitedItemCountPerDay = totalProhibitedItemsCount / totalNumberOfDays;
-		
-		checkAndUpdateAirportState();
-	}
 
-	private void checkAndUpdateAirportState()
-	{
-		if(8 <= avgTrafficPerDay || 2 <= avgProhibitedItemCountPerDay)
-		{
-			currentState = HighRiskState;
-		}
-		
-		else if((4 <= avgTrafficPerDay && 8 > avgTrafficPerDay) || (1 <= avgProhibitedItemCountPerDay && 2 > avgProhibitedItemCountPerDay))
-		{
-			currentState = ModerateRiskState;
-		}
-		
-		else if((0 <= avgTrafficPerDay && 4 > avgTrafficPerDay) || (0 <= avgProhibitedItemCountPerDay && 1 > avgProhibitedItemCountPerDay))
-		{
-			currentState = LowRiskState;
-		}
-	}
 
 	@Override
 	public void tightenOrLoosenSecurity() 
 	{
 		currentState.tightenOrLoosenSecurity();
 	}
+
+	public int getTotalNumberOfTravellers() {
+		return totalNumberOfTravellers;
+	}
+
+	public int getTotalNumberOfDays() {
+		return totalNumberOfDays;
+	}
+
+	public int getTotalProhibitedItemsCount() {
+		return totalProhibitedItemsCount;
+	}
+
+	/*public void setCurrentState(AirportStateI currentStateLn) {
+		currentState = currentStateLn;
+	}*/
+	
+	
 }
