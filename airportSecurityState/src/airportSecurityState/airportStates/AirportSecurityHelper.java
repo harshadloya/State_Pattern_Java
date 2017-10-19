@@ -3,7 +3,6 @@ package airportSecurityState.airportStates;
 import java.util.Calendar;
 
 import airportSecurityState.airportStates.AirportSecurity.ProhibitedItems;
-import airportSecurityState.util.Results;
 
 public class AirportSecurityHelper 
 {
@@ -100,6 +99,7 @@ public class AirportSecurityHelper
 		{
 			return someState.LowRiskState;
 		}
+		
 		//Code should never reach this point
 		return null;
 	}
