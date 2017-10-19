@@ -35,6 +35,7 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface
 	public Results() 
 	{
 		super();
+		MyLogger.writeMessage("Results class default constructor was called", MyLogger.DebugLevel.CONSTRUCTOR);
 		resultSetStrings = new HashMap<Integer, String>();
 		i = 0;
 	}
@@ -46,6 +47,7 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface
 	public Results(String outputPath)
 	{
 		this();
+		MyLogger.writeMessage("Results class parameterized constructor was called", MyLogger.DebugLevel.CONSTRUCTOR);
 		setOutputFilePath(outputPath);
 	}
 

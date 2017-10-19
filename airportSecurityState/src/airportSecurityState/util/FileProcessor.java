@@ -13,7 +13,6 @@ import java.io.IOException;
  */
 public class FileProcessor 
 {
-
 	/**
 	 * Data Members
 	 */
@@ -26,6 +25,8 @@ public class FileProcessor
 	 */
 	public FileProcessor(String filePath)
 	{
+		MyLogger.writeMessage("File Processor class parameterized constructor was called", MyLogger.DebugLevel.CONSTRUCTOR);
+		
 		try
 		{
 			isr = new FileReader(new File(filePath));
@@ -34,7 +35,8 @@ public class FileProcessor
 		catch (FileNotFoundException e) 
 		{
 			System.err.println("File Not Found, Please recheck the path specified in arguments");
-			e.printStackTrace();
+			System.exit(1);
+			//e.printStackTrace();
 		}
 	}
 	

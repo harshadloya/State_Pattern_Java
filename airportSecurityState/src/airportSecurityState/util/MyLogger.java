@@ -1,16 +1,16 @@
-
 package airportSecurityState.util;
 
-public class MyLogger{
+public class MyLogger
+{
 
 	/*DEBUG_VALUE=4 [Print to stdout everytime a constructor is called]
       DEBUG_VALUE=3 [Print to stdout everytime the state is changed]
-      DEBUG_VALUE=2 [FIXME: add your own scheme here]
-      DEBUG_VALUE=1 [FIXME: add your own scheme here]
+      DEBUG_VALUE=2 [Print to stdout everytime a new traveler walks into the airport]
+      DEBUG_VALUE=1 [Print to stdout everytime prohibited item is found on a passenger]
       DEBUG_VALUE=0 [No output should be printed from the application to stdout. It is ok to write to the output file though" ]
 	 */
 
-	public static enum DebugLevel {RELEASE, FROM_RESULTS, IN_RESULTS, IN_RUN, CONSTRUCTOR};
+	public static enum DebugLevel {RELEASE, PROHIBITED_ITEM, NEW_TRAVELER, STATE_CHANGE, CONSTRUCTOR};
 
 	private static DebugLevel debugLevel;
 
@@ -21,9 +21,12 @@ public class MyLogger{
 	 */
 	public static void setDebugValue (int levelIn) 
 	{
-		switch (levelIn) {
+		switch (levelIn) 
+		{
 		case 4: debugLevel = DebugLevel.CONSTRUCTOR; break;
-		// FIXME: add code for other cases
+		case 3: debugLevel = DebugLevel.STATE_CHANGE; break;
+		case 2: debugLevel = DebugLevel.NEW_TRAVELER; break;
+		case 1: debugLevel = DebugLevel.PROHIBITED_ITEM; break;
 		case 0: debugLevel = DebugLevel.RELEASE; break;
 		}
 	}
@@ -43,7 +46,8 @@ public class MyLogger{
 	/**
 	 * @return String
 	 */
-	public String toString() {
+	public String toString() 
+	{
 		return "Debug Level is " + debugLevel;
 	}
 }
