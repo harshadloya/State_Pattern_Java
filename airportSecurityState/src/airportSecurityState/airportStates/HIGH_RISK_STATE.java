@@ -24,7 +24,15 @@ public class HIGH_RISK_STATE implements AirportStateI
 	public void tightenOrLoosenSecurity() 
 	{
 		AirportSecurityHelper.calcValues();
+		String previousState = someState.currentState.toString();
 		someState.currentState = AirportSecurityHelper.checkAndUpdateAirportState(someState);
+		MyLogger.writeMessage("State Changed from " + previousState + " to " + someState.currentState.toString(), MyLogger.DebugLevel.STATE_CHANGE);
 		AirportSecurityHelper.printToFile();
+	}
+
+	@Override
+	public String toString() 
+	{
+		return "HIGH RISK STATE";
 	}
 }

@@ -6,12 +6,6 @@ import airportSecurityState.util.Results;
 
 public class AirportSecurity implements AirportStateI
 {
-	@Override
-	public String toString() 
-	{
-		return "" + currentState;
-	}
-
 	/**
 	 * Data member that is used for reading from a file
 	 */

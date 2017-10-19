@@ -3,6 +3,7 @@ package airportSecurityState.airportStates;
 import java.util.Calendar;
 
 import airportSecurityState.airportStates.AirportSecurity.ProhibitedItems;
+import airportSecurityState.util.MyLogger;
 
 public class AirportSecurityHelper 
 {
@@ -44,7 +45,8 @@ public class AirportSecurityHelper
 		 */
 
 		totalNumberOfTravellers += 1;
-
+		MyLogger.writeMessage("Traveler Number " + totalNumberOfTravellers + " Walked In", MyLogger.DebugLevel.NEW_TRAVELER);
+		
 		dayCheck = checkDayNo(day);
 		if(dayCheck)
 			totalNumberOfDays += 1;
@@ -59,6 +61,7 @@ public class AirportSecurityHelper
 		for(ProhibitedItems pItem : ProhibitedItems.values())
 			if(item.compareTo(pItem.name()) == 0)
 			{
+				MyLogger.writeMessage("Prohibited Item Found: "+item, MyLogger.DebugLevel.PROHIBITED_ITEM);
 				return true;
 			}
 		return false;
