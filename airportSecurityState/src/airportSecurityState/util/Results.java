@@ -25,7 +25,7 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface
 	private HashMap<Integer, String> resultSetStrings;
 	
 	/**
-	 * Counter used for naming similar files - here output(counter) .txt
+	 * Counter used for storing result strings
 	 */
 	private int i;
 	
@@ -56,12 +56,12 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface
 	}
 
 	@Override
-	public void writeToFile(int fileNumber) 
+	public void writeToFile()
 	{
 		try 
 		{
 			String path = getOutputFilePath();
-			String[] temp = path.split("output"+ fileNumber +".tx");
+			String[] temp = path.split("output.tx");
 			
 			File file = new File(temp[0]);
 			boolean check = file.mkdirs();

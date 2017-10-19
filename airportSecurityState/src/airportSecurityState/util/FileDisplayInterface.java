@@ -8,8 +8,7 @@ package airportSecurityState.util;
 public interface FileDisplayInterface 
 {
 	/**
-	 * Method that should be overriden to write to some file
-	 * @param fileNumber - Used to denote a number to the file if there are similar files created by this method
+	 * Method that should be overridden to write to some file
 	 */
-	public void writeToFile(int fileNumber);
+	public void writeToFile();
 }

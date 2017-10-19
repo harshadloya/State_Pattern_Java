@@ -2,6 +2,7 @@ package airportSecurityState.driver;
 
 import airportSecurityState.airportStates.AirportSecurity;
 import airportSecurityState.util.MyLogger;
+import airportSecurityState.util.Results;
 
 /**
  * Class containing the main method which is the starting point of code execution
@@ -35,7 +36,9 @@ public class Driver
 				System.exit(1);
 			}
 			
-			AirportSecurity as = new AirportSecurity(inputFilePath, outputFilePath);	
+			Results result = new Results(outputFilePath);
+			AirportSecurity as = new AirportSecurity(inputFilePath, result);
+			result.writeToFile();
 		}
 		else
 		{

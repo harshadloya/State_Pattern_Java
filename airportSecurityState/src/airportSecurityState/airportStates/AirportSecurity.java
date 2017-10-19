@@ -1,10 +1,7 @@
 package airportSecurityState.airportStates;
 
-import java.util.Calendar;
-import java.util.HashMap;
-
 import airportSecurityState.util.FileProcessor;
-import airportSecurityState.util.TravelerInfo;
+import airportSecurityState.util.Results;
 
 public class AirportSecurity implements AirportStateI
 {
@@ -12,17 +9,8 @@ public class AirportSecurity implements AirportStateI
 	 * Data member that is used for reading from a file
 	 */
 	private FileProcessor fileProcessor;
-	
-	
-	/**
-	 * Data member that holds the path of input file
-	 */
-	//private String inputFile;
 
-	/**
-	 * Data member that holds the path of output file
-	 */
-	private String outputFile;
+	Results resultObj;
 	
 	AirportStateI HighRiskState, LowRiskState, ModerateRiskState;
 	AirportStateI currentState = null;
@@ -38,22 +26,19 @@ public class AirportSecurity implements AirportStateI
 		currentState = LowRiskState;
 	}
 	
-	public AirportSecurity(String inputFilePath, String outputFilePath)
+	public AirportSecurity(String inputFilePath, Results result)
 	{
 		this();
-		outputFile = outputFilePath;
+		resultObj = result;
 		
 		fileProcessor = new FileProcessor(inputFilePath);
 		
 		String line = "";
-		//int i = 0;
-
+		
 		while((line = fileProcessor.readLine(inputFilePath)) != null)
 		{
-			//i++;
 			AirportSecurityHelper.processInput(line);
 			tightenOrLoosenSecurity();
-			//System.out.println(currentState.toString());
 		}
 		
 		//close the open file in the end of reading
