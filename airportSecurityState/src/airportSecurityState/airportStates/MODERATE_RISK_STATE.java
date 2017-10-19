@@ -12,8 +12,8 @@ public class MODERATE_RISK_STATE implements AirportStateI
 	@Override
 	public void tightenOrLoosenSecurity() 
 	{
-		AirportSecurityHelper.calcValues(someState);
-		someState.currentState = AirportSecurityHelper.checkAndUpdateAirportState();
+		AirportSecurityHelper.calcValues();
+		someState.currentState = AirportSecurityHelper.checkAndUpdateAirportState(someState);
 		System.out.println("Moderate Risk Alert");
 	}
 }
