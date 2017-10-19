@@ -103,7 +103,7 @@ public class AirportSecurityHelper
 			return someState.LowRiskState;
 		}
 		
-		//Code should never reach this point
+		//Code should never reach this point - caught exception if ever reached here
 		return null;
 	}
 

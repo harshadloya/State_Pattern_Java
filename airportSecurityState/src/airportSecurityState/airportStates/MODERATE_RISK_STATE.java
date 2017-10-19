@@ -25,8 +25,17 @@ public class MODERATE_RISK_STATE implements AirportStateI
 	{
 		AirportSecurityHelper.calcValues();
 		String previousState = someState.currentState.toString();
-		someState.currentState = AirportSecurityHelper.checkAndUpdateAirportState(someState);
-		MyLogger.writeMessage("State Changed from " + previousState + " to " + someState.currentState.toString(), MyLogger.DebugLevel.STATE_CHANGE);
+		try
+		{
+			someState.currentState = AirportSecurityHelper.checkAndUpdateAirportState(someState);
+			MyLogger.writeMessage("State Changed from " + previousState + " to " + someState.currentState.toString(), MyLogger.DebugLevel.STATE_CHANGE);
+		}
+		catch(NullPointerException ne)
+		{
+			System.err.println("Current State Null, something went terribly wrong in code");
+			ne.printStackTrace();
+			System.exit(1);
+		}
 		AirportSecurityHelper.printToFile();
 	}
 	

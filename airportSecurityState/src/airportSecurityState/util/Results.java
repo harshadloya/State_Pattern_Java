@@ -104,7 +104,8 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface
 		catch (IOException e) 
 		{
 			System.err.println("\nFile write cannot be completed");
-			//e.printStackTrace();
+			e.printStackTrace();
+			System.exit(1);
 		}
 		
 	}
