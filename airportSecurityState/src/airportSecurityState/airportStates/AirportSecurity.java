@@ -41,8 +41,7 @@ public class AirportSecurity implements AirportStateI
 		String line = "";
 		while((line = fileProcessor.readLine(inputFilePath)) != null)
 		{
-			AirportSecurityHelper.processInput(line);
-			tightenOrLoosenSecurity();
+			tightenOrLoosenSecurity(line);
 		}
 		
 		//close the open file in the end of reading
@@ -50,9 +49,9 @@ public class AirportSecurity implements AirportStateI
 	}
 	
 	@Override
-	public void tightenOrLoosenSecurity() 
+	public void tightenOrLoosenSecurity(String line) 
 	{
-		currentState.tightenOrLoosenSecurity();
+		currentState.tightenOrLoosenSecurity(line);
 	}
 	
 }

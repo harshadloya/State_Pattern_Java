@@ -21,8 +21,9 @@ public class MODERATE_RISK_STATE implements AirportStateI
 	}
 
 	@Override
-	public void tightenOrLoosenSecurity() 
+	public void tightenOrLoosenSecurity(String line) 
 	{
+		AirportSecurityHelper.processInput(line);
 		AirportSecurityHelper.calcValues();
 		String previousState = someState.currentState.toString();
 		try

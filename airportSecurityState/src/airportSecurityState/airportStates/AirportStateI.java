@@ -2,5 +2,5 @@ package airportSecurityState.airportStates;
 
 public interface AirportStateI 
 {
-	public void tightenOrLoosenSecurity();
+	public void tightenOrLoosenSecurity(String line);
 }
