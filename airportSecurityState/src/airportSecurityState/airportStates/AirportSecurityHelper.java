@@ -19,7 +19,7 @@ public class AirportSecurityHelper
 	//Extension
 	//private HashMap<Integer, TravelerInfo> travellerData = new HashMap<Integer, TravelerInfo>();
 
-	public static void processInput(String inputLine)
+	public static void processInput(String inputLine) throws NumberFormatException
 	{
 		int day = 0;
 		String item = "";

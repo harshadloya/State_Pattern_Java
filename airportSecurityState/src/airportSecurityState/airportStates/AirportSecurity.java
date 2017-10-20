@@ -41,7 +41,15 @@ public class AirportSecurity implements AirportStateI
 		String line = "";
 		while((line = fileProcessor.readLine(inputFilePath)) != null)
 		{
-			tightenOrLoosenSecurity(line);
+			try
+			{
+				tightenOrLoosenSecurity(line);
+			}
+			catch(NumberFormatException nfe)
+			{
+				System.err.println("Invalid Input Data Received, Skipping this input line");
+				continue;
+			}
 		}
 		
 		//close the open file in the end of reading
@@ -49,7 +57,7 @@ public class AirportSecurity implements AirportStateI
 	}
 	
 	@Override
-	public void tightenOrLoosenSecurity(String line) 
+	public void tightenOrLoosenSecurity(String line) throws NumberFormatException
 	{
 		currentState.tightenOrLoosenSecurity(line);
 	}

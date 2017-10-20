@@ -21,7 +21,7 @@ public class LOW_RISK_STATE implements AirportStateI
 	}
 
 	@Override
-	public void tightenOrLoosenSecurity(String line)
+	public void tightenOrLoosenSecurity(String line) throws NumberFormatException
 	{
 		AirportSecurityHelper.processInput(line);
 		AirportSecurityHelper.calcValues();
